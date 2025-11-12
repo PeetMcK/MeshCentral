@@ -5768,11 +5768,15 @@
             QV('agins_assistant', (v == 7) && (Q('asinsType').value != 4));
             QV('agins_assistant2', (v == 7) && (Q('asinsType').value == 4));
             QV('agins_osx_un', v == 8);
-            Q('aginsbinlnk').onclick = function() { downloadFile((Q('aginsbinlnk').name.split('installflags=')[0]) + 'installflags=' + Q('aginsTypeBin').value + (urlargs.key?('&key=' + urlargs.key):'') + '&meshinstall=' + Q('aginsSysType').value); };
-            Q('aginsbincmd').value = (Q('aginsbincmd').value.split('&installflags=')[0]) + '&installflags=' + Q('aginsTypeBin').value + (urlargs.key?('&key=' + urlargs.key):'') + '&meshinstall=' + Q('aginsSysType').value + '\"';
             QV('aginsTypeDiv', v == 0);
             QV('aginsTypeBinDiv', v == 5);
             QV('asinsTypeDiv', (v == 7));
+
+            // Update binary installer links with correct installflags dropdown
+            if (v == 5) {
+                Q('aginsbinlnk').onclick = function() { downloadFile((Q('aginsbinlnk').name.split('installflags=')[0]) + 'installflags=' + Q('aginsTypeBin').value + (urlargs.key?('&key=' + urlargs.key):'') + '&meshinstall=' + Q('aginsSysType').value); };
+                Q('aginsbincmd').value = (Q('aginsbincmd').value.split('&installflags=')[0]) + '&installflags=' + Q('aginsTypeBin').value + (urlargs.key?('&key=' + urlargs.key):'') + '&meshinstall=' + Q('aginsSysType').value + '\"';
+            }
 
             // Fix the links if needed
             Q('aginsw32lnk').onclick = function() { downloadFile((Q('aginsw32lnk').name.split('installflags=')[0]) + 'installflags=' + Q('aginsType').value + (urlargs.key?('&key=' + urlargs.key):''), null, true); }
