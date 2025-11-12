@@ -5774,6 +5774,7 @@
 
             // Update binary installer links with correct installflags dropdown
             if (v == 5) {
+                Q('aginsbinlnk').name = (Q('aginsbinlnk').name.split('installflags=')[0]) + 'installflags=' + Q('aginsTypeBin').value + (urlargs.key?('&key=' + urlargs.key):'');
                 Q('aginsbinlnk').onclick = function() { downloadFile((Q('aginsbinlnk').name.split('installflags=')[0]) + 'installflags=' + Q('aginsTypeBin').value + (urlargs.key?('&key=' + urlargs.key):'') + '&meshinstall=' + Q('aginsSysType').value); };
                 Q('aginsbincmd').value = (Q('aginsbincmd').value.split('&installflags=')[0]) + '&installflags=' + Q('aginsTypeBin').value + (urlargs.key?('&key=' + urlargs.key):'') + '&meshinstall=' + Q('aginsSysType').value + '\"';
             }
